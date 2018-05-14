@@ -17,18 +17,22 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log('loaded');
         // Init your component properties here.
-        this.cryptoService.getCrypto().subscribe(
-            res => this.cryptos = res,
-            () => {},
-            () => {
-            this.cryptoService.getBTCValue(this.cryptos);
-            
-        });
+        this.getLatestPrices();
     }
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
+    }
+
+    getLatestPrices(): void {
+        this.cryptoService.getCrypto().subscribe(
+            (res) => {this.cryptos = res},
+            () => {},
+            () => {
+                this.cryptos = this.cryptoService.getBTCValue(this.cryptos);
+            });
     }
 }
