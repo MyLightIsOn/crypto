@@ -19,7 +19,7 @@
     <Label class="page-icon fa" text="&#xf015;"></Label>
     <ListView [items]="cryptos" class="small-spacing">
         <ng-template let-item="item">
-            <Label [text]="item.usd_value" class="medium-spacing"></Label>
+            <Label [text]="item.symbol" class="medium-spacing"></Label>
         </ng-template>
     </ListView>
 </GridLayout>
